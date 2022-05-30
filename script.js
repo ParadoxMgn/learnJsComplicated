@@ -1,13 +1,41 @@
-const num = 266219;
-let productOfNum = 1;
-const numArr = num.toString().split('');
+'use strict';
 
-for (let item of numArr) {
-  productOfNum *= item;
+// 1)
+const lang = prompt('Введите язык', 'ru/en');
+const daysWeek = {
+  'ru': ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'],
+  'en': ['Monday', 'Thusday', 'Wensday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+};
+
+// a) через if
+if (lang === 'ru') {
+  for (let item of daysWeek[lang]) {
+    console.log(item);
+  }
+} else if (lang === 'en') {
+  for (let item of daysWeek[lang]) {
+    console.log(item);
+  }
+} else {
+  console.log('Неизвестный язык');
 }
 
-console.log(productOfNum);
+// b) через switch-case
+switch (lang) {
+  case 'ru':
+    console.log(daysWeek[lang]);
+    break;
+  case 'en':
+    console.log(daysWeek[lang]);
+    break;
+  default:
+    console.log('Неизвестный язык');
+}
 
-const powProductOfNum = productOfNum ** 3;
+// c) через многомерный массив без ифов и switch
+console.log(daysWeek[lang]);
 
-console.log(powProductOfNum.toString().slice(0, 2));
+// 2)
+const namePerson = prompt('Введите имя');
+
+console.log(namePerson === "Артем" ? "директор" : namePerson === "Александр" ? "преподаватель" : "студент");
