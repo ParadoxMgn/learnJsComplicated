@@ -1,13 +1,16 @@
-const num = 266219;
-let productOfNum = 1;
-const numArr = num.toString().split('');
+'use strict';
 
-for (let item of numArr) {
-  productOfNum *= item;
-}
+const myFuction = function (someArg) {
+  if (typeof someArg === "string") {
+    const cutSomeArg = someArg.trim();
+    if (cutSomeArg.length > 30) {
+      return cutSomeArg.substring(0, 30) + "...";
+    } else {
+      return cutSomeArg;
+    }
+  } else {
+    return 'Это не строка';
+  }
+};
 
-console.log(productOfNum);
-
-const powProductOfNum = productOfNum ** 3;
-
-console.log(powProductOfNum.toString().slice(0, 2));
+console.log(myFuction('         Lorem ipsum dolor, sit amet consectetur adipisicing elit.         '));
