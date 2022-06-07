@@ -5,8 +5,6 @@ document.body.insertAdjacentHTML('beforeend', `<p class="one"></p>
 
 const oneDate = document.querySelector('.one');
 const twoDate = document.querySelector('.two');
-const listWeeks = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
-const listMonths = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 
 const outputOnDisplay = setInterval(function () {
   const dateNow = new Date();
@@ -18,6 +16,20 @@ const outputOnDisplay = setInterval(function () {
   const hoursNow = dateNow.getHours();
   const minuteNow = dateNow.getMinutes();
   const secondNow = dateNow.getSeconds();
+  let dayWeek = dateNow.toLocaleString('ru', { weekday: 'long' });
+  dayWeek = dayWeek[0].toUpperCase() + dayWeek.slice(1);
+  let dayMonth = dateNow.toLocaleString('ru', { month: 'long' });
+
+  if (dayMonth[dayMonth.length - 1] === 'ь') {
+    dayMonth = dayMonth.replace('ь', 'я');
+  } else {
+    if (dayMonth[dayMonth.length - 1] === 'й') {
+      dayMonth = dayMonth.replace('й', 'я');
+    } else {
+      dayMonth += 'a';
+    }
+  }
+
 
   const getHours = function () {
     if (hoursNow > 4 && hoursNow < 21 || hoursNow === 0) {
@@ -51,7 +63,7 @@ const outputOnDisplay = setInterval(function () {
     }
   };
 
-  oneDate.innerHTML = `Сегодня ${listWeeks[dayWeekNow]}, ${dayNow} ${listMonths[monthNow]} ${yearNow} года, ${hoursNow} ${getHours()} ${minuteNow} минут${getMinSec(minuteNow)} ${secondNow} секунд${getMinSec(secondNow)}`;
+  oneDate.innerHTML = `Сегодня ${dayWeek}, ${dayNow} ${dayMonth} ${yearNow} года, ${hoursNow} ${getHours()} ${minuteNow} минут${getMinSec(minuteNow)} ${secondNow} секунд${getMinSec(secondNow)}`;
 
   twoDate.innerHTML = `${getZero(dayNow)}${dayNow}.${getZero(monthNow)}${monthNow}.${yearNow} - ${getZero(hoursNow)}${hoursNow}:${getZero(minuteNow)}${minuteNow}:${getZero(secondNow)}${secondNow}`;
 }, 1000);
