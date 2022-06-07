@@ -1,16 +1,15 @@
 'use strict';
 
-const outputOnDisplay = setInterval(function () {
-  const dateNow = new Date();
-
-  document.body.insertAdjacentHTML('beforeend', `<p class="one"></p>
+document.body.insertAdjacentHTML('beforeend', `<p class="one"></p>
   <p class="two"></p>`);
 
-  const oneDate = document.querySelector('.one');
-  const twoDate = document.querySelector('.two');
+const oneDate = document.querySelector('.one');
+const twoDate = document.querySelector('.two');
+const listWeeks = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+const listMonths = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
 
-  const listWeeks = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
-  const listMonths = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+const outputOnDisplay = setInterval(function () {
+  const dateNow = new Date();
 
   const dayWeekNow = dateNow.getDay() - 1;
   const yearNow = dateNow.getFullYear();
