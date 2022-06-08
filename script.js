@@ -9,16 +9,15 @@ const twoDate = document.querySelector('.two');
 const outputOnDisplay = setInterval(function () {
   const dateNow = new Date();
 
-  const dayWeekNow = dateNow.getDay() - 1;
+  const dayWeekMonth = dateNow.toLocaleString('ru', { weekday: 'long', month: 'long' }).split(' ');
   const yearNow = dateNow.getFullYear();
   const monthNow = dateNow.getMonth();
   const dayNow = dateNow.getDate();
   const hoursNow = dateNow.getHours();
   const minuteNow = dateNow.getMinutes();
   const secondNow = dateNow.getSeconds();
-  let dayWeek = dateNow.toLocaleString('ru', { weekday: 'long' });
-  dayWeek = dayWeek[0].toUpperCase() + dayWeek.slice(1);
-  let dayMonth = dateNow.toLocaleString('ru', { month: 'long' });
+  const dayWeek = dayWeekMonth[1][0].toUpperCase() + dayWeekMonth[1].slice(1);
+  let dayMonth = dayWeekMonth[0];
 
   if (dayMonth[dayMonth.length - 1] === 'ь') {
     dayMonth = dayMonth.replace('ь', 'я');
