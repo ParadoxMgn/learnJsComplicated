@@ -4,13 +4,10 @@ const inputText = document.getElementById('input-text');
 const text = document.getElementById('text');
 
 const debounce = (func, ms) => {
+  let indexTimeout;
   return () => {
-    let prevChar = this.char;
-    this.char = Date.now();
-    if (prevChar && (this.char - prevChar) <= ms) {
-      clearTimeout(this.indexChar);
-    }
-    this.indexChar = setTimeout(() => { func(); }, ms);
+    clearTimeout(indexTimeout);
+    indexTimeout = setTimeout(func, ms);
   };
 };
 
